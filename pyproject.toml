@@ -1,0 +1,4 @@
+# filepath: /Users/chris.hallett/Documents/Repos/advent-of-code-2024/pyproject.toml
+[tool.black]
+line-length = 88
+target-version = ['py37']
