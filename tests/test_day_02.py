@@ -54,7 +54,7 @@ class TestSafeReportsWithDampener(unittest.TestCase):
         file_path = 'tests/input_data/day_02_1.txt'
         arrays = extract_arrays_from_file(file_path)
         self.assertEqual(
-            calculate_num_of_safe_reports_with_dampener(arrays), 657
+            calculate_num_of_safe_reports_with_dampener(arrays), 674
         )
         
     def test_calculate_num_of_safe_reports_with_dampener__remove_reverse_order_safe(self):
@@ -73,7 +73,7 @@ class TestSafeReportsWithDampener(unittest.TestCase):
     def test_calculate_num_of_safe_reports_with_dampener__big_jump_unsafe(self):
         reports = [[1, 2, 3, 10, 12, 5, 6]]
         self.assertEqual(
-            calculate_num_of_safe_reports_with_dampener(reports), 1
+            calculate_num_of_safe_reports_with_dampener(reports), 0
         )
     
     def test_calculate_num_of_safe_reports_with_dampener__big_jump_end_safe(self):
