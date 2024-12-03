@@ -1,5 +1,5 @@
 import unittest
-from days.day_02 import calculate_num_of_safe_reports
+from days.day_02 import calculate_num_of_safe_reports, calculate_num_of_safe_reports_with_dampener
 
 def extract_arrays_from_file(file_path):
     arrays = []
@@ -11,14 +11,14 @@ def extract_arrays_from_file(file_path):
 
 class TestSafeReports(unittest.TestCase):
     def test_calculate_num_of_safe_reports__base_case(self):
-        file_path = 'tests/input_data/day_02_2_example.txt'
+        file_path = 'tests/input_data/day_02_1_example.txt'
         arrays = extract_arrays_from_file(file_path)
         self.assertEqual(
             calculate_num_of_safe_reports(arrays), 2
         )
 
     def test_calculate_num_of_safe_reports(self):
-        file_path = 'tests/input_data/day_02_2.txt'
+        file_path = 'tests/input_data/day_02_1.txt'
         arrays = extract_arrays_from_file(file_path)
         self.assertEqual(
             calculate_num_of_safe_reports(arrays), 639
@@ -42,5 +42,51 @@ class TestSafeReports(unittest.TestCase):
             calculate_num_of_safe_reports(reports), 1
         )
 
+class TestSafeReportsWithDampener(unittest.TestCase):
+    def test_calculate_num_of_safe_reports_with_dampener__base_case(self):
+        file_path = 'tests/input_data/day_02_1_example.txt'
+        arrays = extract_arrays_from_file(file_path)
+        self.assertEqual(
+            calculate_num_of_safe_reports_with_dampener(arrays), 4
+        )
+        
+    def test_calculate_num_of_safe_reports_with_dampener(self):
+        file_path = 'tests/input_data/day_02_1.txt'
+        arrays = extract_arrays_from_file(file_path)
+        self.assertEqual(
+            calculate_num_of_safe_reports_with_dampener(arrays), 657
+        )
+        
+    def test_calculate_num_of_safe_reports_with_dampener__remove_reverse_order_safe(self):
+        reports = [[1, 2, 3, 4, 5, 4, 6]]
+        self.assertEqual(
+            calculate_num_of_safe_reports_with_dampener(reports), 1
+        )
+        
+    def test_calculate_num_of_safe_reports_with_dampener__big_jump_safe(self):
+        reports = [[1, 2, 3, 10, 5, 6]]
+        self.assertEqual(
+            calculate_num_of_safe_reports_with_dampener(reports), 1
+        )
+        
+        
+    def test_calculate_num_of_safe_reports_with_dampener__big_jump_unsafe(self):
+        reports = [[1, 2, 3, 10, 12, 5, 6]]
+        self.assertEqual(
+            calculate_num_of_safe_reports_with_dampener(reports), 1
+        )
+    
+    def test_calculate_num_of_safe_reports_with_dampener__big_jump_end_safe(self):
+        reports = [[1, 2, 3, 10]]
+        self.assertEqual(
+            calculate_num_of_safe_reports_with_dampener(reports), 1
+        )
+        
+    def test_calculate_num_of_safe_reports_with_dampener__big_jump_start_safe(self):
+        reports = [[10, 1, 2, 3]]
+        self.assertEqual(
+            calculate_num_of_safe_reports_with_dampener(reports), 1
+        )
+    
 if __name__ == "__main__":
     unittest.main()
