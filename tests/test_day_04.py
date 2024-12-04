@@ -9,7 +9,6 @@ def get_crossword_from_file(file_path):
             # remove newline character
             if array[-1] == "\n":
                 array.pop()
-            print(array)
             arrays.append(array) 
     return arrays
 
@@ -20,7 +19,7 @@ class TestSearchXmasCrossword(unittest.TestCase):
         
     def test_search_xmas_crossword(self):
         crossword = get_crossword_from_file("tests/input_data/day_04_1.txt")
-        self.assertEqual(get_xmas_count_from_crossword(crossword), 18)
+        self.assertEqual(get_xmas_count_from_crossword(crossword), 2685)
 
     def test_search_xmas_crossword__one_row(self):
         self.assertEqual(

@@ -19,25 +19,29 @@ def get_xmas_count_from_cell(
 
     # search for xmas in every direction
     for _, direction in enumerate(directions_to_search):
-        search_term = "XMAS"
-        for i in range(1, 4):
+        search_term = "MAS"
+        for i in range(0, 3):
+            x_coord = x_index + ((i + 1) * direction[0])
+            y_coord = y_index + ((i + 1) * direction[1])
             # Check if location exists on crossword
-            x_coord = x_index + (i * direction[0])
-            y_coord = y_index + (i * direction[1])
             if 0 <= x_coord < max_x and 0 <= y_coord < max_y:
-                # If no match, move onto next direction
+                # Check if character matches search term
                 if (
                     crossword_array[y_coord][
                         x_coord
                     ]
                     == search_term[i]
                 ):
-                    if i == 3:
-                        # a full match has been found, increment xmas_count
+                    if i == 2:
+                        # If full match found, increment xmas_count
                         xmas_count += 1
+                    # If match found, continue to next character
+                    continue
                 else:
+                    # If no match, move onto next direction
                     break
             else:
+                # If invalid cell, move onto next direction
                 break
 
     return xmas_count
