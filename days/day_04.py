@@ -26,12 +26,7 @@ def get_xmas_count_from_cell(
             # Check if location exists on crossword
             if 0 <= x_coord < max_x and 0 <= y_coord < max_y:
                 # Check if character matches search term
-                if (
-                    crossword_array[y_coord][
-                        x_coord
-                    ]
-                    == search_term[i]
-                ):
+                if crossword_array[y_coord][x_coord] == search_term[i]:
                     if i == 2:
                         # If full match found, increment xmas_count
                         xmas_count += 1
